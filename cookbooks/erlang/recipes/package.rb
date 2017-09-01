@@ -47,9 +47,18 @@ when 'rhel', 'suse', 'fedora', 'amazon', 'centos'
 
   include_recipe 'yum-epel' if node['platform_family'] == 'rhel' && node['erlang']['package']['install_epel_repository']
   include_recipe 'yum-epel' if node['platform_family'] == 'centos' && node['erlang']['package']['install_epel_repository']
-  include_recipe 'yum-epel' if node['platform_family'] == 'amazon' && node['erlang']['package']['install_epel_repository']
-  
+
+when 'amazon'
+template "/etc/yum.repos.d/rabbitmq-erlang.repo" do
+  source "rabbitmq-erlang.repo.erb"
+end  
+package 'erlang' do
+    version node['erlang']['package']['version'] if node['erlang']['package']['version']
+  end
+else
   package 'erlang' do
     version node['erlang']['package']['version'] if node['erlang']['package']['version']
   end
+end
+  
 end
