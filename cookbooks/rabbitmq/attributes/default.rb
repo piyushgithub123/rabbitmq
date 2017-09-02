@@ -19,10 +19,10 @@ when 'rhel', 'fedora', 'centos'
                                        end
 when 'suse'
   default['rabbitmq']['rpm_package'] = "rabbitmq-server-#{node['rabbitmq']['version']}-1.suse.noarch.rpm"
+end
 
 when 'amazon'
   default['rabbitmq']['rpm_package'] = "rabbitmq-server-#{node['rabbitmq']['version']}-1.el6.noarch.rpm"
-end
 end
 
 default['rabbitmq']['rpm_package_url'] = "https://www.rabbitmq.com/releases/rabbitmq-server/v#{node['rabbitmq']['version']}/"
