@@ -11,7 +11,7 @@ default['rabbitmq']['deb_package'] = "rabbitmq-server_#{node['rabbitmq']['versio
 default['rabbitmq']['deb_package_url'] = "https://www.rabbitmq.com/releases/rabbitmq-server/v#{node['rabbitmq']['version']}/"
 
 case node['platform_family']
-when 'rhel', 'fedora', 'amazon', 'centos'
+when 'rhel', 'fedora', 'centos'
   default['rabbitmq']['rpm_package'] = if node['platform_version'].to_i > 6
                                          "rabbitmq-server-#{node['rabbitmq']['version']}-1.el7.noarch.rpm"
                                        else
@@ -19,6 +19,10 @@ when 'rhel', 'fedora', 'amazon', 'centos'
                                        end
 when 'suse'
   default['rabbitmq']['rpm_package'] = "rabbitmq-server-#{node['rabbitmq']['version']}-1.suse.noarch.rpm"
+end
+
+when 'amazon'
+  default['rabbitmq']['rpm_package'] = "rabbitmq-server-#{node['rabbitmq']['version']}-1.el6.noarch.rpm"
 end
 
 default['rabbitmq']['rpm_package_url'] = "https://www.rabbitmq.com/releases/rabbitmq-server/v#{node['rabbitmq']['version']}/"
