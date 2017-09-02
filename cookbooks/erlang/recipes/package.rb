@@ -29,7 +29,7 @@ when 'debian'
   end
   package 'erlang-dev'
 
-when 'rhel', 'suse', 'fedora', 'amazon', 'centos'
+when 'rhel', 'suse', 'fedora', 'centos'
   if node['platform_version'].to_i == 5 && node['erlang']['package']['install_epel_repository']
     Chef::Log.warn('Adding EPEL Erlang Repo. This will have SSL verification disabled, as')
     Chef::Log.warn('RHEL/CentOS 5.x will not be able to verify the SSL certificate of this')
@@ -50,5 +50,14 @@ when 'rhel', 'suse', 'fedora', 'amazon', 'centos'
 
   package 'erlang' do
     version node['erlang']['package']['version'] if node['erlang']['package']['version']
+  end
+  
+  when 'amazon'
+  template "/etc/yum.repos.d/rabbitmq-erlang.repo" do
+    path "/etc/yum.repos.d/rabbitmq-erlang.repo"
+    source "rabbitmq-erlang.repo.erb"
+  end  
+  execute "erlang" do
+      command "yum -y --disablerepo='amzn*' --enablerepo='rabbitmq-erlang' install erlang"
   end
 end
