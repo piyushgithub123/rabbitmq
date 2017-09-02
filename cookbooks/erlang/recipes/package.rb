@@ -55,7 +55,7 @@ when 'rhel', 'suse', 'fedora', 'centos'
   when 'amazon'
   template "/etc/yum.repos.d/rabbitmq-erlang.repo" do
     path "/etc/yum.repos.d/rabbitmq-erlang.repo"
-    source "rabbitmq-erlang.repo.erb"
+    source "rabbitmq-erlang.repo.rb"
   end  
   execute "erlang" do
       command "yum -y --disablerepo='amzn*' --enablerepo='rabbitmq-erlang' install erlang"
