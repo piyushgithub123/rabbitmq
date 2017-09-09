@@ -188,7 +188,7 @@ default['rabbitmq']['policies'] = {}
 default['rabbitmq']['disabled_policies'] = []
 
 #Ldap
-default['rabbitmq']['ldapenable'] = true
+default['rabbitmq']['ldapenable'] = false
 default['rabbitmq']['ldapServer'] ='localhost'
 default['rabbitmq']['usessl'] ='false'
 default['rabbitmq']['clusterport'] =389
