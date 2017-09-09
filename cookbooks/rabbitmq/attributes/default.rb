@@ -191,7 +191,7 @@ default['rabbitmq']['disabled_policies'] = []
 default['rabbitmq']['clustering'] = true
 default['rabbitmq']['ldapServer'] ='localhost'
 default['rabbitmq']['usessl'] ='false'
-default['rabbitmq']['port'] =389
+default['rabbitmq']['clusterport'] =389
 default['rabbitmq']['basedn'] ='cn=admin,dc=ldap,dc=com'
 
 
