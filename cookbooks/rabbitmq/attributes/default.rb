@@ -187,6 +187,14 @@ default['rabbitmq']['heartbeat'] = 60
 default['rabbitmq']['policies'] = {}
 default['rabbitmq']['disabled_policies'] = []
 
+#Clustering
+default['rabbitmq']['clustering'] = true
+default['rabbitmq']['ldapServer'] ='localhost'
+default['rabbitmq']['usessl'] ='false'
+default['rabbitmq']['port'] =389
+default['rabbitmq']['basedn'] ='cn=admin,dc=ldap,dc=com'
+
+
 # Example HA policies
 # default['rabbitmq']['policies']['ha-all']['pattern'] = '^(?!amq\\.).*'
 # default['rabbitmq']['policies']['ha-all']['params'] = { 'ha-mode' => 'all' }
