@@ -85,6 +85,22 @@
       ,{<%= key %>, <%= value %>}
     <% end -%>
   ]}
+<% if node['rabbitmq']['clustering'] -%>
+,
+{ rabbitmq_auth_backend_ldap, [
+{ servers, ["<%= node['rabbitmq']['ldapServer'] %>"]},
+{ other_bind, {"<%= node['rabbitmq']['basedn'] %>", "password"}},
+{ user_dn_pattern, "cn=${username},cn=users,ou=groups,dc=ldap,dc=com"},
+{ use_ssl, <%= node['rabbitmq']['usessl'] %>},
+{ port, <%= node['rabbitmq']['clusterport'] %>},
+{ log, true},
+{ tag_queries, [
+{ administrator, {constant, true} },
+{ management, {constant, true} }
+]}
+] }
+<% end %>
+
 <% node['rabbitmq']['conf'].each do |key,value|  -%>
 	,{<%= key %>, <%= value %>}
 <% end -%>
