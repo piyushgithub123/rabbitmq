@@ -85,7 +85,7 @@
       ,{<%= key %>, <%= value %>}
     <% end -%>
   ]}
-<% if node['rabbitmq']['clustering'] -%>
+<% if node['rabbitmq']['ldapenable'] -%>
 ,
 { rabbitmq_auth_backend_ldap, [
 { servers, ["<%= node['rabbitmq']['ldapServer'] %>"]},
