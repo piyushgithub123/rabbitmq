@@ -187,8 +187,8 @@ default['rabbitmq']['heartbeat'] = 60
 default['rabbitmq']['policies'] = {}
 default['rabbitmq']['disabled_policies'] = []
 
-#Clustering
-default['rabbitmq']['clustering'] = true
+#Ldap
+default['rabbitmq']['ldapenable'] = true
 default['rabbitmq']['ldapServer'] ='localhost'
 default['rabbitmq']['usessl'] ='false'
 default['rabbitmq']['clusterport'] =389
