@@ -163,7 +163,7 @@ default['rabbitmq']['enabled_users'] =
 default['rabbitmq']['disabled_users'] = []
 
 # plugins
-default['rabbitmq']['enabled_plugins'] = ['rabbitmq_management','rabbitmq_management_visualiser']
+default['rabbitmq']['enabled_plugins'] = ['rabbitmq_management','rabbitmq_management_visualiser','rabbitmq_auth_backend_ldap']
 default['rabbitmq']['disabled_plugins'] = []
 default['rabbitmq']['community_plugins'] = {}
 
